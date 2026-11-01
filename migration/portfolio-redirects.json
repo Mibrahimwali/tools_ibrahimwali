@@ -1,0 +1,59 @@
+{
+  "redirects": [
+    {
+      "source": "/tools",
+      "destination": "https://tools.ibrahimwali.com/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/qr-code-generator",
+      "destination": "https://tools.ibrahimwali.com/qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/image-compressor",
+      "destination": "https://tools.ibrahimwali.com/image-compressor",
+      "permanent": true
+    },
+    {
+      "source": "/tools/image-resizer",
+      "destination": "https://tools.ibrahimwali.com/image-resizer",
+      "permanent": true
+    },
+    {
+      "source": "/tools/jpg-to-png",
+      "destination": "https://tools.ibrahimwali.com/jpg-to-png",
+      "permanent": true
+    },
+    {
+      "source": "/tools/png-to-jpg",
+      "destination": "https://tools.ibrahimwali.com/png-to-jpg",
+      "permanent": true
+    },
+    {
+      "source": "/tools/webp-converter",
+      "destination": "https://tools.ibrahimwali.com/webp-converter",
+      "permanent": true
+    },
+    {
+      "source": "/tools/word-counter",
+      "destination": "https://tools.ibrahimwali.com/word-counter",
+      "permanent": true
+    },
+    {
+      "source": "/tools/character-counter",
+      "destination": "https://tools.ibrahimwali.com/character-counter",
+      "permanent": true
+    },
+    {
+      "source": "/tools/age-calculator",
+      "destination": "https://tools.ibrahimwali.com/age-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/percentage-calculator",
+      "destination": "https://tools.ibrahimwali.com/percentage-calculator",
+      "permanent": true
+    }
+  ]
+}

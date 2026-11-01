@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.ssr/
+.vercel/
+.env*
+!.env.example
+
+.qa/
+
+# Local machine files and diagnostic output
+.DS_Store
+*.log
+coverage/
+playwright-report/
+test-results/

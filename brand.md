@@ -1,0 +1,3 @@
+# Ibrahim Tools
+
+A useful, quiet workspace by Muhammad Ibrahim. Warm paper (#f5f4ee), charcoal ink (#20231e), white work surfaces, controlled acid-lime accents (#d3f56b). Manrope for UI and display; DM Mono for metadata. Forest green for links and active states provides accessible contrast on paper. Dark theme uses charcoal surfaces and lime links. All colors are CSS tokens. Thin borders, 12px cards, generous whitespace, clear controls, no decorative motion, no forced entry. Privacy is a product feature: no uploads, trackers, advertising, or accounts. Tone: direct, practical, specific. Do not claim rankings, search volume, guaranteed AI citations, or fake usage figures.
