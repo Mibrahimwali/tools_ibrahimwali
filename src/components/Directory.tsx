@@ -180,6 +180,7 @@ export default function Directory({
           role="search"
           onSubmit={(e) => e.preventDefault()}
           className="search-box"
+          data-clarity-mask="true"
         >
           <Search size={22} aria-hidden />
           <label className="sr-only" htmlFor="tool-search">

@@ -26,6 +26,9 @@ import { GUIDES } from "./data/guides";
 import { CONTENT_DATE, pageFor } from "./data/pages";
 import { AUTHOR_URL } from "./lib";
 import AskAI from "./components/AskAI";
+import AnalyticsConsent, {
+  CookieSettings,
+} from "./components/AnalyticsConsent";
 import Directory from "./components/Directory";
 import ToolCard from "./components/ToolCard";
 import Breadcrumb from "./components/Breadcrumb";
@@ -231,6 +234,7 @@ export default function App({ path }: { path: string }) {
             <section
               aria-label={`${tool.shortName} workspace`}
               className="workspace-wrap"
+              data-clarity-mask="true"
             >
               <WorkspaceBoundary>
                 {mounted ? (
@@ -493,7 +497,7 @@ export default function App({ path }: { path: string }) {
                 ],
                 [
                   "Analytics and hosting",
-                  "This tools site does not include Google Analytics, Clarity, advertising scripts, or tracking cookies. The hosting provider necessarily receives network requests to serve pages and assets and may retain infrastructure logs such as IP addresses under its own policies. Fonts and branding assets are served from this site.",
+                  "With your permission, Google Analytics (G-PTMKFXTDC8) measures page usage and Microsoft Clarity (z6v4zidf6c) records interactions to help improve the site. Neither vendor loads before acceptance. Advertising consent stays denied. Tool workspaces and the directory search field are masked for Clarity; avoid entering sensitive data elsewhere on the page. Google page-view configuration omits query strings. Your analytics choice is saved on this origin for up to 180 days and can be changed using Cookie settings. Rejecting after analytics has loaded reloads the page to stop recording and clears unsaved tool input. Hosting providers may retain infrastructure logs. Fonts and branding assets are served from this site.",
                 ],
                 [
                   "Ask AI and external links",
@@ -549,6 +553,7 @@ export default function App({ path }: { path: string }) {
             <a href="/blog">Guides</a>
             <a href="/about">About</a>
             <a href="/privacy">Privacy</a>
+            <CookieSettings />
             <a href="/llms.txt">For AI readers</a>
             <a href="mailto:connect@ibrahimwali.com">Feedback</a>
           </nav>
@@ -558,6 +563,7 @@ export default function App({ path }: { path: string }) {
           </div>
         </div>
       </footer>
+      <AnalyticsConsent />
       <AskAI
         title={
           tool?.shortName || guide?.title || page?.title || "Tool directory"

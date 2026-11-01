@@ -82,6 +82,7 @@ assert(
     .includes("noindex,follow"),
 );
 for (const file of [
+  "site-preferences.js",
   "robots.txt",
   "llms.txt",
   "llms-full.txt",
@@ -93,3 +94,26 @@ for (const file of [
 console.log(
   `Verified ${PAGES.length} pages, ${TOOLS.length} tools and guides, ${checked} internal references, metadata, and discovery files.`,
 );
+
+const bootstrap = fs.readFileSync(
+  path.join(dist, "site-preferences.js"),
+  "utf8",
+);
+assert(
+  bootstrap.includes("G-PTMKFXTDC8") && bootstrap.includes("z6v4zidf6c"),
+  "Missing tools measurement IDs",
+);
+for (const p of PAGES) {
+  const file = p.path === "/" ? "index.html" : p.path.slice(1) + ".html";
+  const html = fs.readFileSync(path.join(dist, file), "utf8");
+  assert.equal(
+    (html.match(/src="\/site-preferences.js"/g) || []).length,
+    1,
+    "Expected exactly one deferred loader on " + p.path,
+  );
+  assert(
+    html.includes("analytics_storage: 'denied'") ||
+      html.includes('analytics_storage: "denied"'),
+    "Missing denied consent default on " + p.path,
+  );
+}

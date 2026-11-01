@@ -34,7 +34,7 @@ This is an independently deployable React and TypeScript project. It includes it
 - **Keep useful tools close.** Favorites, recent tools, and your theme preference are saved in your browser.
 - **Choose a comfortable workspace.** Light and dark themes, responsive layouts, keyboard focus indicators, and reduced-motion support are included.
 - **Ask for context.** The floating **Ask AI** menu prepares a question about the public page for your chosen assistant.
-- **Skip the overhead.** No account, advertising scripts, analytics tags, Supabase dependency, or paid AI API is required.
+- **Skip the overhead.** No account, advertising scripts, Supabase dependency, or paid AI API is required. Analytics is optional and consent-based.
 
 ## Tool directory
 
@@ -124,6 +124,7 @@ The preview serves the generated HTML and assets, including a real HTTP 404 for 
 - `npm run build` — typecheck, build client and server bundles, generate pages and discovery files, then validate the output.
 - `npm run preview` — serve the completed static site locally.
 - `npm run test:browser` — test tool interactions, downloads, search, themes, AI links, and responsive layouts. Requires a completed build and an installed Google Chrome browser.
+- `npm run test:analytics` — verify deferred loading, consent, both measurement IDs, and page-view configuration with mocked vendor scripts. Requires a completed build and Google Chrome.
 - `npm run og:render` — regenerate the social preview PNG from its SVG source. Requires Google Chrome.
 
 ## How the site works
@@ -214,7 +215,7 @@ The prompt includes the **public page title and URL**. It never includes a visit
 
 **Tool inputs stay in browser memory.** Images, pasted text, dates, and generated outputs are not uploaded to an application server. Reloading the workspace clears that input.
 
-Only favorites, recently used tool slugs, and the selected theme are persisted in `localStorage`. Visitors can clear these preferences from the [privacy page](https://tools.ibrahimwali.com/privacy). Browser extensions, clipboard managers, the hosting provider, and external AI services have their own behavior and policies.
+Favorites, recently used tool slugs, the selected theme, and a timestamped analytics consent choice are persisted in `localStorage`. Visitors can clear these preferences from the [privacy page](https://tools.ibrahimwali.com/privacy). Browser extensions, clipboard managers, the hosting provider, and external AI services have their own behavior and policies.
 
 The tools expose their limitations rather than hiding them:
 
@@ -227,7 +228,7 @@ The tools expose their limitations rather than hiding them:
 - The contrast checker evaluates solid sRGB colors against WCAG 2.x thresholds; it is not a full accessibility audit.
 - Metadata previews are illustrative. Robots.txt controls cooperating crawlers, not access to private content.
 
-No analytics or advertising scripts are included in this tools project. If tracking is introduced later, update the privacy documentation and implement the appropriate consent behavior before enabling it.
+Google Analytics **G-PTMKFXTDC8** and Microsoft Clarity **z6v4zidf6c** are integrated through a small deferred first-party loader in the page head. Consent Mode v2 defaults to denied. Neither vendor loads until the visitor accepts analytics; tags are scheduled after page load during idle time. Advertising consent remains denied. Tool workspaces and directory search fields carry Clarity masking attributes. The origin-specific choice expires after 180 days and can be reopened through **Cookie settings**. Revoking an active session reloads the document to stop the recorder; the banner warns that unsaved tool input will be cleared. Google receives one configured page view per document; there is no duplicate React page-view hook. Query strings are omitted from the configured Google page location. In GA4 enhanced measurement settings, disable history-based page-change measurement and form interactions if enabled: directory filters update browser history, and this site does not need to measure tool form activity. Provider scripts can be blocked by extensions; verify production receipt in GA4 Realtime and the Clarity dashboard after deployment. No advertising scripts are included.
 
 ## Deployment
 

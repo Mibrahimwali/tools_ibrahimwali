@@ -31,7 +31,7 @@ export const PAGES = [
     path: "/privacy",
     title: "Privacy & Local Processing | Ibrahim Tools",
     description:
-      "How Ibrahim Tools handles files, text, favorites, external AI links, and browser storage. No accounts, uploads, or analytics on this tools site.",
+      "How Ibrahim Tools handles files, text, favorites, external AI links, and browser storage. Local tools, optional consent-based analytics, and clear privacy controls.",
   },
   ...Object.entries(TOOL_CATEGORIES).map(([slug, c]) => ({
     path: `/category/${slug}`,

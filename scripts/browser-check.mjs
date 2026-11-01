@@ -11,6 +11,13 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const errors = [];
+await page.addInitScript(() => {
+  if (!localStorage.getItem("mi-tools-consent-v1"))
+    localStorage.setItem(
+      "mi-tools-consent-v1",
+      JSON.stringify({ choice: "denied", time: Date.now() }),
+    );
+});
 page.on("pageerror", (e) => errors.push(e.message));
 const open = async (slug) => {
   const r = await page.goto(base + "/" + slug);
@@ -221,13 +228,11 @@ try {
     "webp-converter",
   ]) {
     await open(slug);
-    await page
-      .locator("input[type=file]")
-      .setInputFiles({
-        name: "test.png",
-        mimeType: "image/png",
-        buffer: Buffer.from(png, "base64"),
-      });
+    await page.locator("input[type=file]").setInputFiles({
+      name: "test.png",
+      mimeType: "image/png",
+      buffer: Buffer.from(png, "base64"),
+    });
     const button =
       slug === "image-compressor"
         ? "Compress image"

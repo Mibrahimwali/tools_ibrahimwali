@@ -99,7 +99,7 @@ const ORIGINAL_TOOLS: ToolDefinition[] = [
     benefits: [
       "Works offline after the page loads",
       "Print-ready PNG export",
-      "No watermarks or tracking",
+      "No watermarks or redirect service",
     ],
   },
   {

@@ -177,7 +177,7 @@ function markdown(page) {
         .join("\n\n") +
       `\n\n[Open ${TOOLS.find((t) => t.slug === guide.toolSlug).shortName}](${BASE}/${guide.toolSlug})`;
   } else if (page.path === "/privacy") {
-    body += `## Processing\n\nFiles, text, dates, and generated results stay in browser memory. No uploads, accounts, analytics, or advertising scripts are included. Favorites, recent tool slugs, and theme preferences use localStorage; clear them on the privacy page. Hosting infrastructure can log requests. External AI services receive only the prepared public page question and have their own privacy policies. Contact: connect@ibrahimwali.com.\n`;
+    body += `## Processing\n\nFiles, text, dates, and generated results stay in browser memory. No uploads, accounts, or advertising scripts are included. Google Analytics and Microsoft Clarity load only after analytics consent, which can be changed in Cookie settings. Tool workspaces are masked for recordings. Favorites, recent tool slugs, and theme preferences use localStorage; clear them on the privacy page. Hosting infrastructure can log requests. External AI services receive only the prepared public page question and have their own privacy policies. Contact: connect@ibrahimwali.com.\n`;
   } else if (page.path === "/about") {
     body += `## Developer\n\nMuhammad Ibrahim is a technology executive, founder, and builder with 15+ years in software and technology. His work focuses on blockchain, real-world assets, and AI infrastructure. Portfolio: https://ibrahimwali.com. Contact: connect@ibrahimwali.com.\n`;
   } else if (page.path === "/blog") {
@@ -230,7 +230,7 @@ fs.writeFileSync(
   path.join(dist, "robots.txt"),
   `User-agent: *\nAllow: /\n\nSitemap: ${BASE}/sitemap.xml\n\n# Human and AI-readable documentation: ${BASE}/llms.txt\n`,
 );
-const llms = `# Ibrahim Tools\n\n> Free browser tools by Muhammad Ibrahim for images, writing, developers, and SEO. No account, uploads, analytics, or ads. Tool inputs run locally in the visitor's browser.\n\nUse canonical pages for citations. Each tool has instructions, limitations, a guide, and related links. This file is a discovery aid, not a guarantee of inclusion in AI answers. Markdown companions are available at /{slug}.md and /blog/{slug}-guide.md.\n\n## Core\n\n- [Directory](${BASE}/): All tools.\n- [Guides](${BASE}/blog): Practical tool guides.\n- [Developer](${BASE}/about): Muhammad Ibrahim; [portfolio](https://ibrahimwali.com).\n- [Privacy](${BASE}/privacy): Browser storage and external AI links.\n- [Full documentation](${BASE}/llms-full.txt)\n- [Machine-readable search index](${BASE}/search-index.json)\n\n${Object.entries(
+const llms = `# Ibrahim Tools\n\n> Free browser tools by Muhammad Ibrahim for images, writing, developers, and SEO. No account, uploads, or ads. Analytics is optional and consent-based. Tool inputs run locally in the visitor's browser.\n\nUse canonical pages for citations. Each tool has instructions, limitations, a guide, and related links. This file is a discovery aid, not a guarantee of inclusion in AI answers. Markdown companions are available at /{slug}.md and /blog/{slug}-guide.md.\n\n## Core\n\n- [Directory](${BASE}/): All tools.\n- [Guides](${BASE}/blog): Practical tool guides.\n- [Developer](${BASE}/about): Muhammad Ibrahim; [portfolio](https://ibrahimwali.com).\n- [Privacy](${BASE}/privacy): Browser storage and external AI links.\n- [Full documentation](${BASE}/llms-full.txt)\n- [Machine-readable search index](${BASE}/search-index.json)\n\n${Object.entries(
   TOOL_CATEGORIES,
 )
   .map(
